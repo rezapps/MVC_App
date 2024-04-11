@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Storage.Models;
+using Storage;
 
 namespace Storage.Data
 {
@@ -15,5 +16,6 @@ namespace Storage.Data
         }
 
         public DbSet<Storage.Models.Product> Product { get; set; } = default!;
+        public DbSet<Storage.ProductViewModel> ProductViewModel { get; set; } = default!;
     }
 }

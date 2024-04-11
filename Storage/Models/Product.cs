@@ -12,7 +12,11 @@ namespace Storage.Models
 		public DateTime OrderDate { get; set; }
         public string? Category { get; set; }
         public string? Shelf { get; set; }
-        public int Price { get; set; }
-        public int Count { get; set; }
+
+		[Range(1, 500)]
+		public int Price { get; set; }
+
+		[Range(1, 10000)]
+		public int Count { get; set; }
     }
 }

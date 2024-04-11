@@ -153,5 +153,21 @@ namespace Storage.Controllers
         {
             return _context.Product.Any(e => e.Id == id);
         }
-    }
+
+
+		public async Task<IActionResult> ProductList()
+		{
+			var productViewModels = await _context.Product
+				.Select(product => new ProductViewModel
+				{
+					Name = product.Name,
+					Count = product.Count,
+					InventoryValue = product.Count * product.Price,
+					Price = product.Price
+				})
+				.ToListAsync();
+
+			return View(productViewModels);
+		}
+	}
 }

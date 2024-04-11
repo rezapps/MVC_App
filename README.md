@@ -7,7 +7,7 @@ To view this project, run these commands and in your browser visit `localhost:51
 
 ```bash
 git clone https://github.com/rezapps/MVC_App.git
-cd mvc/Storage
+cd MVC_App/Storage
 
 dotnet build
 dotnet run

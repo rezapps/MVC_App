@@ -1,0 +1,37 @@
+# Visual Studio specific files
+/obj/
+/bin/
+*.suo
+*.user
+*.vbproj
+*.csproj
+*.fslproj
+
+# Temporary files
+*~
+*.tmp
+*.userstate
+
+# Build outputs
+/Properties/
+/Release/
+/Debug/
+
+# Testing Frameworks (choose relevant ones)
+/TestResults/
+/coverage/
+
+# NuGet packages
+/packages/
+
+# Secret files
+*.secrets
+web.config
+appsettings.json
+
+# Database files (if applicable)
+*.mdf
+*.ldf
+
+# Ignore any OS specific files
+.DS_Store

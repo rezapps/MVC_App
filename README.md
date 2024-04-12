@@ -1,7 +1,7 @@
 # MVC_App# Assignment No.11
 
 This Assignment covers MVC with ASP.Net.
-This Project is created with .Net version 9.
+This Project is created with .Net version 9 preview.
 
 To view this project, run these commands and in your browser visit `localhost:5118`
 

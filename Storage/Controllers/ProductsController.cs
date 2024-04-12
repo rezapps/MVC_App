@@ -154,7 +154,7 @@ namespace Storage.Controllers
             return _context.Product.Any(e => e.Id == id);
         }
 
-
+        // Product list method
 		public async Task<IActionResult> ProductList()
 		{
 			var productViewModels = await _context.Product
@@ -169,5 +169,41 @@ namespace Storage.Controllers
 
 			return View(productViewModels);
 		}
+
+        // Filtering method
+        public async Task<IActionResult> FilterProducts(string searchString)
+        {
+
+            var products = await _context.Product.ToListAsync();
+            IEnumerable<ProductViewModel> filteredProducts;
+
+            if (string.IsNullOrEmpty(searchString))
+            {
+                filteredProducts = products.Select(p => new ProductViewModel
+                {
+                    Name = p.Name,
+                    Count = p.Count,
+                    InventoryValue = p.Count * p.Price,
+                    Price = p.Price
+                });
+            }
+            else
+            {
+                filteredProducts = products.Where(p => p.Category.ToLower().Contains(searchString.ToLower()))
+                    .Select(p => new ProductViewModel
+                    {
+                        Name = p.Name,
+                        Count = p.Count,
+                        InventoryValue = p.Count * p.Price,
+                        Price = p.Price
+                    });
+            }
+
+            return View("ProductList", filteredProducts);
+        }
+
+
+
+
 	}
 }

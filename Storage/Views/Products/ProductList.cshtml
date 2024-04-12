@@ -1,7 +1,7 @@
 @model IEnumerable<Storage.ProductViewModel>
 
 @{
-	ViewData["Title"] = "ProductList";
+	ViewData["Title"] = "Product List";
 }
 
 <h1>ProcutList</h1>
@@ -9,9 +9,25 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+
+<form asp-action="FilterProducts" method="get">
+    <div class="form-group">
+        <div class="input-group">
+            <input type="text" name="searchString" class="form-control" placeholder="Filter by category name..." />
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">Filter</button>
+            </div>
+        </div>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
@@ -28,6 +44,9 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
@@ -36,11 +55,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.InventoryValue)
             </td>
-            <td>
+            @* <td>
                 <a asp-action="Edit" asp-route-id="@item.Name">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Name">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Name">Delete</a>
-            </td>
+            </td> *@
         </tr>
 }
     </tbody>
